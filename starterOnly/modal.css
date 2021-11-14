@@ -101,7 +101,7 @@ img {
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
+    /* margin-top: -15px; */
   }
 }
 
@@ -183,6 +183,42 @@ main {
   position: relative;
   color: #fff;
   padding-top: 10px;
+}
+
+.success-modal-content {
+  display: none;
+  margin: 5% auto;
+  width: 100%;
+  max-width: 500px;
+  background: #232323;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  color: #fff;
+  padding-top: 10px;
+}
+
+.success-container {
+  margin: 0 5rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-btn {
+  position: absolute;
+  bottom: 2rem;
+  background: #fe142f;
+  display: block;
+  margin: 0 auto;
+  border-radius: 7px;
+  font-size: 1rem;
+  padding: 12px 82px;
+  color: #fff;
+  cursor: pointer;
+  border: 0;
 }
 
 .modal-body {
@@ -323,6 +359,7 @@ input[data-error]::after {
 .close:after {
   transform: rotate(-45deg);
 }
+
 .btn-submit,
 .btn-signup {
   background: #fe142f;
@@ -481,6 +518,10 @@ footer {
   margin: 0 20px;
 }
 @media screen and (max-width: 800px) {
+  img {
+    width: 50vw;
+  }
+
   .hero-section {
     display: block;
     box-shadow: unset;
@@ -497,7 +538,7 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
+    font-size: 3.2rem;
     white-space: normal;
   }
   .hero-text {
