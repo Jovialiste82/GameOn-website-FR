@@ -68,6 +68,24 @@ img {
   display: none;
 }
 
+.hidden {
+  display: none;
+}
+
+.fwbolder {
+  font-weight: bolder;
+}
+
+.warning-border {
+  border: red solid 2px;
+  padding: 0px 7px 9px 2px;
+}
+
+.checkboxes {
+  margin-top: 12px;
+  margin-bottom: 19px;
+}
+
 @media screen and (max-width: 768px) {
   .topnav a {
     display: none;
@@ -226,12 +244,19 @@ main {
   margin: 15px auto;
 }
 
-label {
+.error-msg {
+  font-size: 0.7rem;
+  letter-spacing: 0.01rem;
+  color: red;
+}
+
+label,
+.text-label {
   font-family: var(--font-default);
-  font-size: 17px;
+  font-size: 12px;
   font-weight: normal;
   display: inline-block;
-  margin-bottom: 11px;
+  /* margin-bottom: 11px; */
 }
 input {
   padding: 8px;
@@ -439,10 +464,11 @@ input[data-error]::after {
   background-color: rgba(0, 0, 0, 0.1);
 }
 /* custom select end */
-.text-label {
+/* .text-label {
   font-weight: normal;
   font-size: 16px;
-}
+} */
+
 .hero-section {
   min-height: 93vh;
   border-radius: 10px;
