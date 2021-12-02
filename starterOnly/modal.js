@@ -100,33 +100,46 @@ function removeError(input, errors) {
 }
 
 // ///////// Validation //////////////////////
+
+// Validate first name
 const validateFirstName = (firstName, errors) => {
+  // check if first name is missing
   firstName.value === "" || firstName.value == null
     ? insertError(firstName, "Prénom obligatoire", errors)
-    : firstName.value.length < 2
+    : // check if first name has at least two characters
+    firstName.value.length < 2
     ? insertError(firstName, "2 Caractères minimum", errors)
     : !firstName.value.match(nameFormat)
-    ? insertError(firstName, "Utilisez uniquement des lettres", errors)
+    ? // check if first name has only letters
+      insertError(firstName, "Utilisez uniquement des lettres", errors)
     : removeError(firstName, errors);
 };
 
+// Validate last name
 const validateLastName = (lastName, errors) => {
+  // check if last name is missing
   lastName.value === "" || lastName.value == null
     ? insertError(lastName, "Nom obligatoire", errors)
-    : lastName.value.length < 2
+    : // check if last name has at least two characters
+    lastName.value.length < 2
     ? insertError(lastName, "2 Caractères minimum", errors)
     : !lastName.value.match(nameFormat)
-    ? insertError(lastName, "Utilisez uniquement des lettres", errors)
+    ? // check if last name has only letters
+      insertError(lastName, "Utilisez uniquement des lettres", errors)
     : removeError(lastName, errors);
 };
 
+// Validate email
 const validateEmail = (email, errors) => {
+  // check if email matches email format
   !email.value.match(mailFormat)
     ? insertError(email, "Email non valide", errors)
     : removeError(email, errors);
 };
 
+// Validate birth date
 const validateBirthDate = (birthdate, errors) => {
+  // set minimum age to register
   const minAge = 15;
   const setMinAge = (age) => 1000 * 60 * 60 * 24 * 365.25 * age;
   const getBirthdateEpoch = (string) => {
@@ -137,26 +150,33 @@ const validateBirthDate = (birthdate, errors) => {
       dateDetails[2]
     ).valueOf();
   };
+  // function to check if player is old enough
   const isOldEnough = () => {
     const birthDateObject = getBirthdateEpoch(birthdate.value);
     const todayEpoch = new Date().valueOf();
     return todayEpoch - birthDateObject > setMinAge(minAge) ? true : false;
   };
 
+  // check if birthdate is missing
   birthdate.value === "" || birthdate.value == null
     ? insertError(birthdate, "Saisissez votre date de naissance", errors)
-    : isOldEnough()
+    : // check if player is old enough
+    isOldEnough()
     ? removeError(birthdate, errors)
     : insertError(birthdate, `Age minimum: ${minAge} ans`, errors);
 };
 
+// Validate quantity field
 const validateQuantity = (quantity, errors) => {
+  // check if quantity is missing
   quantity.value === "" || quantity.value == null
     ? insertError(quantity, "Sélectionnez un nombre", errors)
     : removeError(quantity, errors);
 };
 
+// Validate location radio button
 const validateLocation = (location, errors) => {
+  // check if city is missing
   if (location === null) {
     errors.location = "Ville non selectionnée";
     city.classList.remove("hidden");
@@ -170,7 +190,9 @@ const validateLocation = (location, errors) => {
   return errors;
 };
 
+// Validate TCs checkbox
 const validateTCs = (cgu, errors) => {
+  // check if mandatory TCs have not been checked
   if (!cgu.checked) {
     errors.cgu = "CGU obligatoires";
     cguWarning.classList.remove("hidden");
