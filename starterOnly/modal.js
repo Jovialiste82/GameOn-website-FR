@@ -140,7 +140,7 @@ const validateEmail = (email, errors) => {
 // Validate birth date
 const validateBirthDate = (birthdate, errors) => {
   // set minimum age to register
-  const minAge = 15;
+  const minAge = 12;
   const setMinAge = (age) => 1000 * 60 * 60 * 24 * 365.25 * age;
   const getBirthdateEpoch = (string) => {
     const dateDetails = string.split("-").map((item) => parseInt(item));
@@ -205,11 +205,11 @@ const validateTCs = (cgu, errors) => {
 };
 
 // ////////// Form Submit ///////////////////
+
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  let height = modal.offsetHeight;
   let errors = {};
-
+  // let height = modal.offsetHeight;
   validateFirstName(firstName, errors);
   validateLastName(lastName, errors);
   validateEmail(email, errors);
@@ -220,10 +220,9 @@ form.addEventListener("submit", (e) => {
 
   console.log(errors);
   if (Object.keys(errors).length === 0) {
-    setTimeout(() => {
-      modal.style.display = "none";
-      successModal.style.height = `${height}px`;
-      successModal.style.display = "block";
-    }, 10);
+    modal.style.display = "none";
+    // successModal.style.height = `${height}px`;
+    successModal.style.height = `80vh`;
+    successModal.style.display = "block";
   }
 });
